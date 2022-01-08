@@ -14,21 +14,14 @@
  * }
  */
 class Solution {
-    List<Integer>l=new ArrayList<>();
-    int max=0;
     public int maxAncestorDiff(TreeNode root) {
-        max(root);
-        return max;
+        return dfs(root, root.val, root.val);
     }
-    private int max(TreeNode r){
-        if(r==null)return max;
-        l.add(r.val);
-        max(r.left);
-        int ri=r.val;
-        max=max<Math.abs(Collections.min(l)-ri)?Math.abs(Collections.min(l)-ri):max<Math.abs(Collections.max(l)-ri)?Math.abs(Collections.max(l)-ri):max;
-        max(r.right);
-        if(l.size()>0)
-            l.remove(l.size()-1); 
-        return max;
-    }
+
+    public int dfs(TreeNode root, int mn, int mx) {
+        if (root == null) return mx - mn;
+        mx = Math.max(mx, root.val);
+        mn = Math.min(mn, root.val);
+        return Math.max(dfs(root.left, mn, mx), dfs(root.right, mn, mx));
+    }   
 }
