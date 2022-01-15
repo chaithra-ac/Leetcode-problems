@@ -18,5 +18,6 @@ class Solution {
         cur.remove(cur.size()-1);
         compute(k,remain,num+1,cur);
         }
+        else return;
     }
 }
