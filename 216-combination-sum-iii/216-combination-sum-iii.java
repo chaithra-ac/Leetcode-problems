@@ -19,6 +19,6 @@ class Solution {
         cur.remove(cur.size()-1);
         compute(k,n,ele+1,cur);
         }
-        else return;
+        // else return;
     }
 }
