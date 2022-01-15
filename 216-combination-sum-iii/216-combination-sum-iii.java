@@ -10,16 +10,15 @@ class Solution {
             return;
         }
 
-        if(ele>9){
+        else if(ele>9||n<0){
             return;
         }
-                if(cur.size()<=k){
+        if(cur.size()<=k){
             cur.add(ele);
-             System.out.println(cur+" "+n);
-
         compute(k,n-ele,ele+1,cur);
         cur.remove(cur.size()-1);
         compute(k,n,ele+1,cur);
         }
+        else return;
     }
 }
