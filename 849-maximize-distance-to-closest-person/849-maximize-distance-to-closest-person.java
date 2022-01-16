@@ -8,17 +8,15 @@ class Solution {
         if(s[0]==0&&i!=0&&flag==0&&s[i]==1){
             lc=count;
             flag=1;
-        }
+            }
             if(s[i]==0){
-            ++count;
+                ++count;
                 if(count>max)
                    max=count; 
-        }
-        if(s[i]==1){
-            count=1;
-        }        
+            }
+            if(s[i]==1)
+              count=1;       
     }
-        System.out.print(rc+" "+(max/2)+" "+lc);
         return Math.max(lc,Math.max(max/2,rc));
     }
 }
