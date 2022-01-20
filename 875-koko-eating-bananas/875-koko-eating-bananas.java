@@ -26,8 +26,10 @@ class Solution {
     boolean canComplete(int[]piles,int mid,int h)
     {
         int hr=0;
-        for(int i:piles)
+        for(int i:piles){
             hr+=(int)Math.ceil((double)i/mid);
-        return hr<=h;
+            if(hr>h)return false;
+        }
+        return true;
     }
 }
