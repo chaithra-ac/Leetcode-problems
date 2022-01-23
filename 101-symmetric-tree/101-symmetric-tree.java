@@ -15,19 +15,6 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        
-//check if the root is alone without left or right child if yes, its symmetric 
-        
-        if(root.left==null&&root.right==null)
-            return true;
-        
-//check if the root node has left or right child only if yes,declare here itself has its not symmetric
-        
-        if(root.left==null||root.right==null) 
-            return false;
-        
-// else check with all elements about its symmetric ness
-        
     return check(root,root);
     }
     
