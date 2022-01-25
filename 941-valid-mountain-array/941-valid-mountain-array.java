@@ -13,6 +13,6 @@ class Solution {
              else return false;
                  
      }
-            return v==1&&f==1&&true;
+            return v==1&&f==1;
     }
 }
