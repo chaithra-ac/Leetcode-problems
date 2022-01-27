@@ -2,10 +2,12 @@ class Solution {
         List<Integer>l=new ArrayList<>();
     public List<Integer> findClosestElements(int[] a, int k, int x) {
             int n=a.length,p=0;
+            if(x>a[0]&&a[n-1]>x){
            for(int i=0;i<n;i++){
                    if(a[i]>x){     
                      p=i-1;break;      
                    }
+           }
            }
                  if(x<=a[0])p=0;
                    if(a[n-1]<=x)
