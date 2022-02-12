@@ -3,13 +3,13 @@ class Solution {
         int m=g.length,n=g[0].length;
         boolean [][]b=new boolean[m][n];
         for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                List<String>l=new ArrayList<>();
-                if(!b[i][j]&&dfs(g,i,j,m,n,b,g[i][j])){
-                    return true;
-                }
+            for(int j=0;j<n;j++)
                 
-            }
+                if(!b[i][j]&&dfs(g,i,j,m,n,b,g[i][j]))
+                    return true;
+                
+                
+            
         }
                 return false;
     }
