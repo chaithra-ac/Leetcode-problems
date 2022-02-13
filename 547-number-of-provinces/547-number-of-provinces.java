@@ -1,21 +1,21 @@
-public class Solution {
-    public void dfs(int[][] M, int[] visited, int i) {
-        for (int j = 0; j < M.length; j++) {
-            if (M[i][j] == 1 && visited[j] == 0) {
-                visited[j] = 1;
-                dfs(M, visited, j);
+class Solution {
+    public int findCircleNum(int[][] g) {
+       int n=g.length,c=0;
+        boolean[]b=new boolean[n];
+        for(int i=0;i<n;i++){
+            if(!b[i]){
+                c++;
+                dfs(g,i,b,n);
             }
         }
+        return c;
     }
-    public int findCircleNum(int[][] M) {
-        int[] visited = new int[M.length];
-        int count = 0;
-        for (int i = 0; i < M.length; i++) {
-            if (visited[i] == 0) {
-                dfs(M, visited, i);
-                count++;
+    void dfs(int[][]g,int i,boolean[]b,int n){
+        for(int j=0;j<n;j++){
+            if(!b[j]&&g[i][j]==1){
+                b[j]=true;
+                dfs(g,j,b,n);
             }
         }
-        return count;
     }
 }
