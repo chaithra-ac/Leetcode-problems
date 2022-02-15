@@ -1,8 +1,5 @@
 public class Solution {
     public int rangeBitwiseAnd(int m, int n) {
-        if(m == 0){
-            return 0;
-        }
         int moveFactor = 1;
         while(m != n){
             m >>= 1;
