@@ -10,13 +10,11 @@ class Solution {
         }
         if(t==0){
             l.add(new ArrayList(cur));
-            System.out.println(cur);
             return;
         }
         cur.add(a[n]);
         compute(l,cur,a,t-a[n],n);
         cur.remove(cur.size()-1);
-        // t=t+a[n];
         compute(l,cur,a,t,n+1);
         
     }
