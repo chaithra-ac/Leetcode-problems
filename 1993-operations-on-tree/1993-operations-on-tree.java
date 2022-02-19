@@ -1,3 +1,16 @@
+/*
+Define a data structure "Node" to store all information about a single node and connecting the tree.
+Use a map to access any node in O(1)
+Finally impliment the functions as requested.
+
+In upgrade functions, I check for all 3 conditions one by one.
+
+The node is unlocked - East to check, since I just need to read node attribute
+It has at least one locked descendant (by any user) -Did a DFS on the descendant and returned true if any node attribute "isLocked" is true.
+It does not have any locked ancestors.- Easy to check, since we are storing the parent of each node as an attribute "parent". We just need to use a while loop until node become null and keep moving up the tree.
+Follow-up: This solution will work for any number of connecting nodes and not just binary tree.
+
+*/
 class LockingTree {
 
     class Node{
@@ -18,10 +31,10 @@ class LockingTree {
         }
     }
     
-    Map <Integer, Node> tree;
+    Map <Integer, Node> tree=new HashMap<>();
     public LockingTree(int[] parent) {
         
-        tree = new HashMap<>();
+        // tree = new HashMap<>();
         tree.put(0, new Node(0, null));
         
         for(int child = 1; child<parent.length;child++){
