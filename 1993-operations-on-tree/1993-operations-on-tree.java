@@ -83,8 +83,8 @@ class LockingTree {
     public boolean upgrade(int num, int user) {
         Node node = tree.get(num);
         
-        boolean cond1 = (node.isLocked == false);
-        if(!cond1) return false;
+        //cond1 = (node.isLocked == false);
+        if(node.isLocked) return false;
         
         //cond2
         boolean cond2 = false;
