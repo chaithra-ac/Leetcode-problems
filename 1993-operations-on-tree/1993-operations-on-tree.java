@@ -15,31 +15,30 @@ class LockingTree {
 
     class Node{
         int val;
-        List <Node> descendants;
+        List <Node> descendants=new ArrayList<>();;
         Node parent = null;
         boolean isLocked = false;
         int lockedBy;
         Node( int val){
             this.val = val;
-            this.descendants = new ArrayList<>();
         }
         
         Node( int val, Node parent){
             this.val = val;
             this.parent = parent;
-            this.descendants = new ArrayList<>();
         }
     }
     
     Map <Integer, Node> tree=new HashMap<>();
+    
     public LockingTree(int[] parent) {
         
-        // tree = new HashMap<>();
         tree.put(0, new Node(0, null));
         
         for(int child = 1; child<parent.length;child++){
             
             tree.putIfAbsent(child, new Node(child));
+            
             tree.putIfAbsent(parent[child], new Node(parent[child]));
             
             Node childNode = tree.get(child);
@@ -54,6 +53,12 @@ class LockingTree {
     }
     
     public boolean lock(int num, int user) {
+      // System.out.println()  
+        /*
+        for(Map.Entry<Integer,Node>map:tree.entrySet()){
+            Node temp=map.getValue();
+         System.out.println(map.getKey()+" "+temp.val);}
+        */
         
         Node node = tree.get(num);
         if(node.isLocked ==false){
@@ -79,7 +84,7 @@ class LockingTree {
         Node node = tree.get(num);
         
         boolean cond1 = (node.isLocked == false);
-        if(cond1==false) return false;
+        if(!cond1) return false;
         
         //cond2
         boolean cond2 = false;
@@ -91,7 +96,7 @@ class LockingTree {
         }
         else
             return false; // no descendants
-        if(cond2 ==false) return false;
+        if(!cond2) return false;
         boolean cond3 = checkAncestors(node.parent);
         if(cond3 ==false) return false;
         
