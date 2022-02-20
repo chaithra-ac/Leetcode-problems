@@ -1,20 +1,14 @@
 class Solution {
-    public int removeCoveredIntervals(int[][] nums) {
-        int i=0,res=nums.length;
-     while(i<nums.length){
-         for(int[]j:nums){
-             if(!(nums[i][0]==j[0]&&nums[i][1]==j[1])&&nums[i][0]<=j[0]&&nums[i][1]>=j[1]){
-                 // System.out.println(nums[i][0]+" "+nums[i][1]+" "+j[0]+" "+j[1]);
-                 res--;
-                 j[0]=j[1]=-1;
-             }
-         }
-         // for(int[]check:nums)
-             // System.out.println(check[0]+" "+check[1]);
-         i++;
-     }
-        return res;
-             
-   
+        public int removeCoveredIntervals(int[][] intervals) {
+        Arrays.sort(intervals, (i, j) -> (i[0] == j[0] ? j[1] - i[1] : i[0] - j[0]));
+        int count = 0, cur = 0;
+        for (int[] a : intervals) {
+            if (cur < a[1]) {
+                cur = a[1];
+                ++count;
+            }
+        }
+        return count;        
     }
+
 }
