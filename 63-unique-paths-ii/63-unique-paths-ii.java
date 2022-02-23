@@ -25,7 +25,7 @@ class Solution {
       for(int i=1;i<m;i++){
        for(int j=1;j<n;j++){
            if(g[i][j]==1){
-               g[i][j]=max;
+              g[i][j]=max; 
            }
            else if(g[i-1][j]==max)
                g[i][j]=g[i][j-1];
