@@ -17,32 +17,25 @@ class Node {
     }
 }
 */
-class Solution{
-Map<Integer, Node> nodesMap = new HashMap<>();
 
-public Node cloneGraph(Node node) {
-    
-    if(node == null){
-        return node;
+class Solution {
+    Map<Integer,Node>map=new HashMap<>();
+    public Node cloneGraph(Node node) {
+        if(node==null)return node;
+        return clone(node);
     }
-    
-   return clone(node);
-    
+    Node clone(Node node){
+        if(map.containsKey(node.val))
+            return map.get(node.val);
+            
+                Node temp=new Node(node.val);
+                map.put(node.val,temp);
+            
+            
+            for(Node nei:node.neighbors)
+                temp.neighbors.add(clone(nei));
+            
+            System.out.print(temp.val+" "); 
+      return temp;  
+    }
 }
-
-public Node clone(Node node){
-    
-    if(nodesMap.containsKey(node.val)){
-        return nodesMap.get(node.val);
-    }
-    Node copy = new Node(node.val);
-    nodesMap.put(node.val, copy);
-    
-    for(Node neighbor : node.neighbors){
-        copy.neighbors.add(clone(neighbor));
-    }
-    
-    return copy; 
- }
-}
-
