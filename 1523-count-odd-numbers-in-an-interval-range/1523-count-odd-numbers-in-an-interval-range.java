@@ -1,12 +1,18 @@
 class Solution {
     public int countOdds(int low, int high) {
-      int res=0,temp=0;
+      return (high+1)/2-low/2;
+    } 
+        
+        
+        
+        
+        /*int res=0,temp=0;
         if(low==high&&(low&1)==1)return 1;
         res+=(low&1)+(high&1);
         temp=(res>1)?(high-low-1):high-low;
         res+=temp/2;
         return res;
-    }
+    }*/
         
         
         
