@@ -7,12 +7,8 @@ class Solution {
         b=new boolean[m][n];
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                if(!b[i][j]&&g[i][j]==1){
-                    temp=compute(g,i,j,0);
-                if(r<temp)r=temp;
-                }
-                     
-                    
+                if(!b[i][j]&&g[i][j]==1)
+                    r=Math.max(compute(g,i,j,0),r);
             }
         }
         return r;
