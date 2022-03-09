@@ -10,27 +10,30 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-       ListNode temp=new ListNode(0);
-        ListNode res=temp;
-        while(head!=null){
-            if(head.next==null||head.val!=head.next.val){
-                temp.next=head;
-                temp=temp.next;
+        ListNode dup=null;
+        ListNode dummy=new ListNode();
+        dummy.next=head;
+        // System.out.print(dummy.val);
+        ListNode res=dummy;
+        while(dummy!=null&&dummy.next!=null&&dummy.next.next!=null){
+            if(dummy.next.val==dummy.next.next.val){
+              dup=howfar(dummy.next,dummy.next.val);
+                while(dup!=null&&dup.next!=null&&dup.val==dup.next.val)
+                  dup=howfar(dup,dup.val);
+                dummy.next=dup;
+                dummy=dup;
+                // System.out.print(dummy.val+" ");
             }
-            else{
-            System.out.print(head.next.val);
+            else
+                dummy=dummy.next;
 
-                while(head.val==head.next.val){
-                  head=head.next;
-                    if(head.next==null){
-                        temp.next=null;
-                        break;
-                    }
-            }
-                System.out.print(head.val);
-            }
-            head=head.next;
+                 // System.out.println(dummy.val+" ");
         }
         return res.next;
+    }
+    ListNode howfar(ListNode dup,int cur){
+        while(dup!=null&&dup.val==cur)
+            dup=dup.next;
+        return dup;
     }
 }
