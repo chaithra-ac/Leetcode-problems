@@ -27,16 +27,17 @@ class Solution {
     p=head;
     ListNode res=p;
     while(len<k-1){
-       p=p.next;len++; 
+       p=p.next;
+        len++; 
     }
        head=p.next;
        p.next=null;
-        ListNode dummy=head;
+        p=head;
     while(head.next!=null)
         head=head.next;
         head.next=res;
         
-    return dummy;
+    return p;
 }
 
     
