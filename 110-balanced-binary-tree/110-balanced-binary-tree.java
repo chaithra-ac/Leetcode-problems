@@ -23,7 +23,7 @@ class Solution {
             b=(Math.abs(l-r))<=1;
 
            if(b==false)
-               return false;
+               return b;
            else{
            isBalanced(root.left);
            isBalanced(root.right);
