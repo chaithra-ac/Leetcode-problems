@@ -3,7 +3,7 @@ class Solution {
         String temp="";
         int i=0;
         while(i<path.length()){
-            System.out.println(temp+" "+i);
+            // System.out.println(temp+" "+i);
           
             if(path.charAt(i)=='/'){
                temp+='/';
