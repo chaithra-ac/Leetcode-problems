@@ -17,9 +17,8 @@ class Solution {
         // if(stack.size() == 0) return "";
         
         StringBuilder result = new StringBuilder();
-        HashSet<Integer> set = new HashSet<>(stack);
         for(int i=0;i<s.length();i++)
-            if(!set.contains(i))
+            if(!stack.contains(i))
                 result.append(s.charAt(i));
         
         return result.toString();
