@@ -9,14 +9,13 @@ class Solution {
            stack.pop();
            j++;
        }
-        else if(i<n){
-             stack.push(pushed[i]);
-            i++;
-         }
+        else if(i<n)
+             stack.push(pushed[i++]);
+            
          else
              return false;
          
      }
-        return j>=n;
+        return j==n;
     }
 }
