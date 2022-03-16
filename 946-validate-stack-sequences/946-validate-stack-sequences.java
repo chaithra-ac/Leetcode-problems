@@ -4,7 +4,7 @@ class Solution {
        int  j=0,i=1,n=popped.length;
         stack.push(pushed[0]);
      while(j<n){
-         System.out.println(stack+" "+i+" "+j);
+         // System.out.println(stack+" "+i+" "+j);
        if(!stack.isEmpty()&&stack.peek()==popped[j]){
            stack.pop();
            j++;
@@ -13,7 +13,7 @@ class Solution {
              stack.push(pushed[i]);
             i++;
          }
-         else if(i>=n&&stack.peek()!=popped[j])
+         else
              return false;
          
      }
