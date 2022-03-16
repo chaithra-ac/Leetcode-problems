@@ -1,4 +1,5 @@
 class Solution {
+    int a,b;
     public int evalRPN(String[] tokens) {
      Stack<Integer>stack=new Stack<>();
       int i=0;
@@ -6,8 +7,8 @@ class Solution {
                             // System.out.println(stack);
         if(tokens[i].equals("+")||tokens[i].equals("-")||tokens[i].equals("*")||tokens[i].equals("/")){
             
-                int b=stack.pop();
-                int a=stack.pop();
+                b=stack.pop();
+                a=stack.pop();
                             
                 switch(tokens[i++]){
                     case "+":stack.push(a+b);break;
@@ -18,8 +19,7 @@ class Solution {
             }   
             
             else
-                stack.push(Integer.parseInt(tokens[i++])); 
-            
+                stack.push(Integer.parseInt(tokens[i++]));   
         }
        return stack.peek();
     }
