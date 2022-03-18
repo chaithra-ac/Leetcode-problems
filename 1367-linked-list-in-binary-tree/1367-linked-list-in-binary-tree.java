@@ -25,9 +25,12 @@
  */
 class Solution {
     public boolean isSubPath(ListNode head, TreeNode root) {
-      if(root==null)return false;
+      if(root==null)
+          return false;
+        
       else if(root.val==head.val&&compute(root,head))
           return true;
+        
         else
             return isSubPath(head,root.left)||isSubPath(head,root.right);
     }
@@ -36,15 +39,11 @@ class Solution {
       if(head==null)
           return true;
     
-       else if(root==null)
+       else if(root==null||head.val!=root.val)
            return false;
         
-        else if(head.val==root.val){
-           return compute(root.left,head.next)||compute(root.right,head.next);
-        }
         else
-            return false;
-            
+           return compute(root.left,head.next)||compute(root.right,head.next);   
     }
 }
 
