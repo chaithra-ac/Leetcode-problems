@@ -1,0 +1,9 @@
+bca
+cab
+abc
+​
+​
+​
+cba
+bacd
+acdb
