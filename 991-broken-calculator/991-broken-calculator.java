@@ -3,12 +3,15 @@ class Solution {
         int ans = 0;
         while (target > startValue) {
             ans++;
-            if (target % 2 == 1)
+            if (target % 2 == 1){
                 target++;
-            else
+            }
+            else{
                 target /= 2;
+            }
         }
 
-        return ans + startValue - target;
+                return ans + startValue - target;
+
     }
 }
