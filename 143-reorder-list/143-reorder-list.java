@@ -15,7 +15,6 @@ class Solution {
     public void reorderList(ListNode head) {
         temp=head;
          head=temp;
-        ListNode size=head;
         ListNode run=head;
         compute(run);
         
