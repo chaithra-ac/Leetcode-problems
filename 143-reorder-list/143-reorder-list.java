@@ -16,12 +16,6 @@ class Solution {
         temp=head;
          head=temp;
         ListNode size=head;
-        while(size!=null){
-            s++;
-            size=size.next;
-            
-        }
-        s=(s%2==0)?s:s-1;
         ListNode run=head;
         compute(run);
         
@@ -29,6 +23,7 @@ class Solution {
     void compute(ListNode head){
         if(head==null)
             return;
+        if(head!=null)s++;
         compute(head.next);
         if(s/2>0){
         ListNode node=temp.next;
@@ -37,7 +32,6 @@ class Solution {
         temp.next=node;     
         temp=temp.next;
         s=s-2;
-            // System.out.println(s+" "+temp.val+" "+node.val);
         }
         else temp.next=null;
     }
