@@ -2,9 +2,9 @@ class Solution {
     public boolean searchMatrix(int[][] mat, int t) {
      for(int i=0;i<mat.length;i++){
          for(int j=0;j<mat[0].length;j++){
+             if(mat[i][j]>t)break;
              if(mat[i][j]<=t&&mat[i][mat[0].length-1]>=t&&bs(i,mat,t,mat[0].length))
                  return true;
-             else if(mat[i][j]>t)break;
              else continue;
          }
      } 
