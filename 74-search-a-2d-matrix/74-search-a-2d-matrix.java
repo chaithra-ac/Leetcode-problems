@@ -1,21 +1,23 @@
 class Solution {
-    public boolean searchMatrix(int[][] m, int t) {
-     for(int i=0;i<m.length;i++){
-             if(m[i][0]<=t&&m[i][(m[0].length)-1]>=t){
-                     System.out.print(m[i][0]);
-                     return bs(m,i,t);
-     }
-     }   
-            return false;
+    public boolean searchMatrix(int[][] mat, int t) {
+     for(int i=0;i<mat.length;i++){
+         for(int j=0;j<mat[0].length;j++){
+             if(mat[i][j]<=t&&mat[i][mat[0].length-1]>=t&&bs(i,mat,t,mat[0].length))
+                 return true;
+             else if(mat[i][j]>t)break;
+             else continue;
+         }
+     } 
+        return false;
     }
-        boolean bs(int m[][],int i,int t){
-                int s=0,e=m[0].length-1,mid=0;
-                while(s<=e){
-                        mid=s+(e-s)/2;
-                        if(m[i][mid]==t)return true;
-                        if(m[i][mid]<t)s=mid+1;
-                        else e=mid-1;
-                }
-                return false;
+    boolean bs(int i,int[][]mat,int t,int e){
+        int m=0,s=0;
+        while(s<e){
+            m=s+(e-s)/2;
+            if(mat[i][m]==t)return true;
+            else if(mat[i][m]<t)s=m+1;
+            else e=m;
         }
+        return false;
+    }
 }
