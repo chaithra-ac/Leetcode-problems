@@ -5,7 +5,7 @@ class Solution {
            q.add(i);
         int a=0,b=0;
         while(q.size()>1){
-            System.out.println(q);
+            // System.out.println(q);
             a=q.poll();
             b=q.poll();
             if(a<b)
