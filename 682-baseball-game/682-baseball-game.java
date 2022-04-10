@@ -3,25 +3,29 @@ class Solution {
         int sum=0,t=0;
        ArrayList<Integer>list=new ArrayList<>();
         for(int i=0;i<ops.length;i++){
-                          // System.out.println(list);  
+                          // System.out.println(list+" "+sum);  
             if(ops[i].equals("D")){
-               list.add(list.get(list.size()-1)*2);
+                t=list.get(list.size()-1)*2;
+               list.add(t);
+                sum+=t;
             }
             else if(ops[i].equals("C")){
-                list.remove(list.size()-1);
+                t=list.size()-1;
+                sum-=list.get(t);
+                list.remove(t);
             }
             else if(ops[i].equals("+")){
-                list.add(list.get(list.size()-1)+list.get(list.size()-2));
+                t=list.get(list.size()-1)+list.get(list.size()-2);
+                list.add(t);
+                sum+=t;
             }
             else{
-                // System.out.println();
                 t=Integer.parseInt(ops[i]);
                  list.add(t);
+                sum+=t;
             }
         }
-        for(int i:list){
-            sum+=i;
-        }
+    
         return sum;
     }
 }
