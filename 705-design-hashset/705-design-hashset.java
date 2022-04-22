@@ -1,19 +1,34 @@
 class MyHashSet {
-    int[]ary;
+    int bucket=10000;
+LinkedList<Integer>[]list;
+    private int has_function(int key){
+        return key%bucket;
+    }
     public MyHashSet() {
-      ary=new int[1000001];  
+        list=new LinkedList[bucket];
+        
     }
     
     public void add(int key) {
-      ary[key]=-1;
+        int i=has_function(key);
+        if(list[i]==null)list[i]=new LinkedList<>();
+        if(list[i].indexOf(key)==-1){
+            list[i].add(key);
+        }
     }
     
     public void remove(int key) {
-      ary[key]=0;  
+         int i=has_function(key);
+    if(list[i]==null)return;
+        if(list[i].indexOf(key)!=-1){ 
+            list[i].remove(list[i].indexOf(key));
+        }
     }
     
     public boolean contains(int key) {
-        return ary[key]==-1;
+         int i=has_function(key);
+    if(list[i]==null || list[i].indexOf(key)==-1)return false;
+       return true;
     }
 }
 
