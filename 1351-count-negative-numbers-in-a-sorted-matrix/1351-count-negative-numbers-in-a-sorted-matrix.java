@@ -1,9 +1,9 @@
 class Solution {
     public int countNegatives(int[][] nums) {
-        int s=0,e=0,mid=0,i=0,j=0,r=0;
-     for(i=0;i<nums.length;i++){
-        for(j=0;j<nums[0].length;j++){
-            e=nums[0].length;
+        int s=0,e=0,mid=0,l=nums[0].length,r=0;
+     for(int i=0;i<nums.length;i++){
+        for(int j=0;j<l;j++){
+            e=l;
             s=0;
                 while(s<e){
                     mid=s+(e-s)/2;
@@ -13,9 +13,8 @@ class Solution {
                         e=mid;   
                 }
         }
-         r+=nums[0].length-s;
-        // System.out.println(s+" "+e+" "+r);
-         
+         r+=l-s;
+        // System.out.println(s+" "+e+" "+r);  
      } 
         return r;
     }
