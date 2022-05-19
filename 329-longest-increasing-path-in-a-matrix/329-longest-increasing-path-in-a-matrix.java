@@ -17,7 +17,7 @@ class Solution {
        for(int i=0;i<matrix.length;i++){
            for(int j=0;j<matrix[0].length;j++){
                ob=dfs(matrix,i,j,matrix.length,matrix[0].length,c);
-                   System.out.println("index "+i+" "+j+" "+ob);
+                   // System.out.println("index "+i+" "+j+" "+ob);
                if(ob>max){
                    max=ob;}
                
