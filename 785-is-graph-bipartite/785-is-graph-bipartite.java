@@ -10,8 +10,10 @@ class Solution {
     boolean compute(int[][]g,int []v,int node,int color){
         v[node]=color;
         for(int i:g[node]){
-            if(v[i]==-color)continue;
-             if(v[i]==color||(!compute(g,v,i,-color)))return false;
+             if(v[i]==-color)
+                 continue;
+             if(v[i]==color||(!compute(g,v,i,-color)))
+                 return false;
             
         }
         return true;
