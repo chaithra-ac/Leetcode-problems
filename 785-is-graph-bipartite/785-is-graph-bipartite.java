@@ -5,18 +5,17 @@ class Solution {
             Queue<Integer>q=new LinkedList<>();
             if(v[i]==0){
                 q.add(i);
-                int color=1;
-                v[i]=color;
+                // int color=1;
+                v[i]=1;
                 while(!q.isEmpty()){
                   int node=q.poll();
-                    color=-color;
+                    // color=-color;
                     for(int adj:g[node]){
                         if(v[adj]==v[node])return false;
 
                         else if(v[adj]==0){
                             v[adj]=-v[node];
-                            System.out.print(v[adj]);
-                          q.add(adj);  
+                            q.add(adj);  
                         }                        
                     }
                     System.out.println(q);
