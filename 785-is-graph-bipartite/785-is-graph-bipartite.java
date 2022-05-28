@@ -1,31 +1,19 @@
-
 class Solution {
-    public boolean isBipartite(int[][] graph) {
-        //BFS
-        // 0(not meet), 1(black), 2(white)
-        int[] visited = new int[graph.length];
-        
-        for (int i = 0; i < graph.length; i++) {
-            if (graph[i].length != 0 && visited[i] == 0) {
-                visited[i] = 1;
-                Queue<Integer> q = new LinkedList<>();
-                q.offer(i);
-                while(! q.isEmpty()) {
-                    int current = q.poll();
-                    for (int c: graph[current]) {
-
-                            if (visited[c] == 0) {
-                                visited[c] = (visited[current] == 1) ? 2 : 1;
-                                q.offer(c);
-                            } else {
-                                if (visited[c] == visited[current]) return false;
-                            }
-                    }
-                }                        
-                
-            }
+    public boolean isBipartite(int[][] g) {
+        int[]v=new int[g.length];
+       for(int i=0;i<g.length;i++){
+           if(v[i]==0&&(!compute(g,v,i,1)))
+               return false;
+           }
+        return true;
+    }
+    boolean compute(int[][]g,int []v,int node,int color){
+        v[node]=color;
+        for(int i:g[node]){
+            if(v[i]==-color)continue;
+             if(v[i]==color||(!compute(g,v,i,-color)))return false;
+            
         }
-        
         return true;
     }
 }
