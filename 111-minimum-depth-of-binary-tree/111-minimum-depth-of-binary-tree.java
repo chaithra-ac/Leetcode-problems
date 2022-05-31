@@ -13,20 +13,12 @@
  *     }
  * }
  */
-class Solution {
-    int min=Integer.MAX_VALUE;
+public class Solution {
     public int minDepth(TreeNode root) {
-        if(root==null)return 0;
-     compute(root,1);
-        return min;
-    }
-   void compute(TreeNode root,int l){
-       if(root==null)return;
-        if(root.left==null&&root.right==null&&min>l){
-            min=l;
-            return;
-        }
-       compute(root.left,l+1);
-       compute(root.right,l+1);
+        if(root == null) return 0;
+        int left = minDepth(root.left);
+        int right = minDepth(root.right);
+        return (left == 0 || right == 0) ? left + right + 1: Math.min(left,right) + 1;
+       
     }
 }
