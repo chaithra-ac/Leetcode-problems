@@ -17,13 +17,12 @@ class Node {
 };
 */
 class Pair{
-    int n;
+    Node node;
     int d;
         public List<Node> children;
-    public Pair(int n,int d,List<Node> _children){
-        this.n=n;
+    public Pair(Node node,int d){
         this.d=d;
-        children = _children;
+        this.node=node;
     }
 }
 class Solution {
@@ -32,11 +31,11 @@ class Solution {
         Queue<Pair>q=new LinkedList<>();
         if(root==null)return max;
         if(root.children.size()==0)return 1;
-           q.add(new Pair(root.val,1,root.children));
+           q.add(new Pair(root,1));
         while(!q.isEmpty()){
             Pair node=q.poll();
-            for(Node child:node.children){
-                q.add(new Pair(child.val,node.d+1,child.children));
+            for(Node child:node.node.children){
+                q.add(new Pair(child,node.d+1));
                 if(node.d+1>max)max=node.d+1;
             }
         }
