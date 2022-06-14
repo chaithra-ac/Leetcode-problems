@@ -1,46 +1,52 @@
 class Solution {
-    public boolean equationsPossible(String[] equations) {
-        ArrayList<Integer>[] graph = new ArrayList[26];
-        for (int i = 0; i < 26; ++i)
-            graph[i] = new ArrayList();
-
-        for (String eqn: equations) {
-            if (eqn.charAt(1) == '=') {
-                int x = eqn.charAt(0) - 'a';
-                int y = eqn.charAt(3) - 'a';
-                graph[x].add(y);
-                graph[y].add(x);
+        public boolean equationsPossible(String[] equations) {
+        Map<Character, List<Character>> graph = new HashMap<>();
+        for (String equation : equations) {
+            char l = equation.charAt(0);
+            char r = equation.charAt(3);
+            if (equation.charAt(1) == '=') {
+                graph.computeIfAbsent(l, k -> new ArrayList<>()).add(r);
+                graph.computeIfAbsent(r, k -> new ArrayList<>()).add(l);
+            } else if (l == r) {
+                return false;
             }
         }
 
-        int[] color = new int[26];
-        int t = 0;
-        for (int start = 0; start < 26; ++start) {
-            if (color[start] == 0) {
-                t++;
-                Stack<Integer> stack = new Stack();
-                stack.push(start);
-                while (!stack.isEmpty()) {
-                    int node = stack.pop();
-                    for (int nei: graph[node]) {
-                        if (color[nei] == 0) {
-                            color[nei] = t;
-                            stack.push(nei);
-                        }
-                    }
-                }
+        boolean[] visited = new boolean[26];
+        int[] index = new int[26];
+        int components = 1;
+        for (char c : graph.keySet()) {
+            int i = c - 'a';
+            if (!visited[i]) {
+                dfs(c, graph, visited, index, components);
+                components++;
             }
         }
 
-        for (String eqn: equations) {
-            if (eqn.charAt(1) == '!') {
-                int x = eqn.charAt(0) - 'a';
-                int y = eqn.charAt(3) - 'a';
-                if (x == y || color[x] != 0 && color[x] == color[y])
-                    return false;
+
+        for (String equation : equations) {
+            if (equation.charAt(1) == '=') {
+                continue;
+            }
+            int l = equation.charAt(0) - 'a';
+            int r = equation.charAt(3) - 'a';
+            if (index[l] != 0 && index[l] == index[r]) {
+                return false;
             }
         }
-
         return true;
     }
+
+    void dfs(char v, Map<Character, List<Character>> graph, boolean[] visited, int[] index, int components) {
+        int i = v - 'a';
+        if (visited[i]) {
+            return;
+        }
+        index[i] = components;
+        visited[i] = true;
+        for (char c : graph.get(v)) {
+            dfs(c, graph, visited, index, components);
+        }
+    }
+
 }
