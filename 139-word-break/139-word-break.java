@@ -7,9 +7,9 @@ class Trie{
     }
 }
 class Solution {
-    boolean[]dp;
+    boolean[]dp;int len;
     public boolean wordBreak(String s, List<String> dic) {
-        int len=s.length();
+        len=s.length();
         dp=new boolean[s.length()+1];
         Trie root=buildTrie(dic);
         Trie temp=root;
@@ -34,9 +34,10 @@ class Solution {
         }
         return root;
     }
+    
     void check(int st,String s,Trie root){
         Trie temp=root;
-        for(int i=st;i<s.length();i++){
+        for(int i=st;i<len;i++){
             if(temp.trie[s.charAt(i)-'a']!=null){
                 if(temp.trie[s.charAt(i)-'a'].isEnd)
                     dp[i+1]=true;
@@ -45,6 +46,6 @@ class Solution {
             else return;
         }
             if(temp.isEnd)
-                dp[s.length()]=true;
+                dp[len]=true;
     }
 }
