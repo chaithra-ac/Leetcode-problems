@@ -7,8 +7,7 @@ class Solution {
         }
         int i=n-1,j=k-1,max=l;
         while(j>=0&&i>=0){
-            l-=points[j--];
-            l+=points[i--];
+            l=l-points[j--]+points[i--];
             max=Math.max(l,max);
         }
         return max;
