@@ -4,6 +4,8 @@ class Solution {
         List<int[]> list = new LinkedList<>();
         for (int[] p : people)
             list.add(p[1], p);
+    for (int[] p : people)
+        System.out.println(p[0]+" "+p[1]+" , "+p);
         return list.toArray(new int[list.size()][]);
         }
    
