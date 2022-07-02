@@ -11,26 +11,21 @@
 class Solution {
     public ListNode partition(ListNode head, int x) {
     ListNode dummyl=new ListNode(0);
+    ListNode less=dummyl;
     ListNode dummyg=new ListNode(0);
     ListNode great=dummyg;
-    ListNode less=dummyl;
        while(head!=null){
            if(head.val<x){
-               ListNode temp=head;
-               head=head.next;
-               temp.next=null;
-               dummyl.next=temp;
+               dummyl.next=head;
                dummyl=dummyl.next;
            }
            else{
-               ListNode temp=head;
-               head=head.next;
-               temp.next=null;
-               dummyg.next=temp;
+               dummyg.next=head;
               dummyg=dummyg.next;
                }
-           // head=head.next;
+               head=head.next;
        }
+        dummyg.next=null;
         dummyl.next=great.next;
         return less.next;
     }
