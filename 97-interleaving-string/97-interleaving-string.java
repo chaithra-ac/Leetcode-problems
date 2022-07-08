@@ -8,9 +8,8 @@ class Solution {
      return compute(s1,s2,s3,s1.length()-1,s2.length()-1,s3.length()-1);   
     }
     boolean compute(String s1,String s2,String s3,int i,int j,int k){
-        if(k<0)
+        if(k<0||(i>=0&&s1.substring(0,i+1).equals(s3.substring(0,k+1)))||(j>=0&&s2.substring(0,j+1).equals(s3.substring(0,k+1))))
             return true;
-        // System.out.println(i+" "+j+" "+k);
         if(i<0&&j<0)return false;
         
         if(i>=0&&j>=0&&dp[i][j]>=0)
