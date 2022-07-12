@@ -1,37 +1,26 @@
 class Solution {
-    // Approach : to ignore extra space we check if the string till now is empty or not
-    // we move from last index of input and when we encounter a space then we just reverse the string we got and store it 
-    
     public String reverseWords(String s) {
-        int n = s.length();//to store length of the string
-        
-        String ans="";
-        int i=n-1;
-        
-        while(i>=0){
-            StringBuilder temp= new StringBuilder("");
-            
-            // storing the string
-            
-            while(i>=0 && s.charAt(i)!=' '){
-                temp.append(s.charAt(i));
-                i--;
-            }
-            
-                    
-            // ignoring spaces
-            
-            while(i>=0 && s.charAt(i)==' ')i--; 
-            
-            //if string contains characters then include it
-            
-            if(temp.length()>0){
-                StringBuilder temp2 = new StringBuilder(temp.reverse());
-                temp2.append(" ");
-                ans+=temp2.toString();
-            }
+        int i=0;
+        while(i<s.length()&&s.charAt(i)==' '){
+            ++i;
         }
-        ans = ans.substring(0,ans.length()-1);
-        return ans;
+        s=s.substring(i);
+       String[]arr=s.split("\\s+");
+        StringBuilder sb=new StringBuilder("");
+         int j=arr.length-1;
+         i=0;
+        System.out.print(Arrays.toString(arr));
+        while(i<j){
+            String temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            i++;j--;
+        }
+        
+        for(int k=0;k<arr.length;k++){
+           if(k>0)sb.append(" ");
+            sb.append(arr[k]);
+        }
+        return sb.toString();
     }
 }
