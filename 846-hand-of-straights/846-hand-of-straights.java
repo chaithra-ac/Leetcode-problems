@@ -1,23 +1,22 @@
 class Solution {
     public boolean isNStraightHand(int[] hand, int groupSize) {
+        
         if(hand.length%groupSize!=0) return false;
+        
         Arrays.sort(hand);
+        
        HashMap<Integer,Integer>map=new HashMap<>();
         for(int i:hand)map.put(i,map.getOrDefault(i,0)+1);
        
-        // System.out.println(map.keySet()+" "+map.values());
  
         int g=hand.length/groupSize;
         for(int i=0;i<hand.length;i++){
           if(map.get(hand[i])>0){
-              boolean possible=group(hand[i],map,groupSize);
-              if(possible)
+              if(group(hand[i],map,groupSize))
                   --g; 
               else
                   return false;
-          }
-        // System.out.println(map.keySet()+" "+map.values()+" "+g);
-            
+          }  
         }
         return true;
     }
