@@ -1,31 +1,40 @@
 class Solution {
-    public int numMatchingSubseq(String S, String[] words) {
-        Map<Character, Queue<String>> map = new HashMap<>();
-        int count = 0;
-        for(int i = 0; i < S.length(); i++) {
-            map.putIfAbsent(S.charAt(i), new LinkedList<>());
-        }
-        for(String word : words) {
-            char c = word.charAt(0);
-            if(map.containsKey(c)) {
-                map.get(c).offer(word);
+    public int numMatchingSubseq(String s, String[] words) {
+      HashMap<Character,ArrayList<Integer>>map=new HashMap<>();
+        
+       for(int i=0;i<s.length();i++){
+           if(map.containsKey(s.charAt(i)))
+           map.get(s.charAt(i)).add(i);
+        else {
+            map.put(s.charAt(i),new ArrayList<Integer>());
+            map.get(s.charAt(i)).add(i);
             }
-        }
-        for(int i = 0; i < S.length(); i++) {
-            char c = S.charAt(i);
-            Queue<String> q = map.get(c);
-            int size = q.size();
-            for(int k = 0; k < size; k++) {
-                String str = q.poll();
-                if(str.length() == 1) {
-                    count++;
-                } else {
-                    if(map.containsKey(str.charAt(1))) {
-                        map.get(str.charAt(1)).add(str.substring(1));
-                    }
+       }
+        
+        int count=0;
+        for(int i=0;i<words.length;i++){
+            String w=words[i];
+            int j=0,pre=-1;
+            while(j<w.length()){
+                int f=0;
+                if(map.containsKey(w.charAt(j))){
+                  for(int k:map.get(w.charAt(j))){
+                      if(pre<k){
+                          pre=k;
+                          f=1;
+                      if(j==w.length()-1)count++;
+                          break;
+                       }
+                       ;
                 }
+                }
+                else break;
+                if(f==0)break;
+                // System.out.println(words[i]+" "+count);
+                j++;
             }
         }
-        return count;
+        System.out.print(map);
+           return count;
     }
 }
