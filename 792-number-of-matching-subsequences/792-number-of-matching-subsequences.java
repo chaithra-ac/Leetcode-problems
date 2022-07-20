@@ -10,7 +10,6 @@ class Solution {
             map.get(s.charAt(i)).add(i);
             }
        }
-        
         int count=0;
         for(int i=0;i<words.length;i++){
             String w=words[i];
@@ -20,21 +19,16 @@ class Solution {
                 if(map.containsKey(w.charAt(j))){
                   for(int k:map.get(w.charAt(j))){
                       if(pre<k){
-                          pre=k;
-                          f=1;
+                          pre=k;f=1;
                       if(j==w.length()-1)count++;
                           break;
                        }
-                       ;
+                   }
                 }
-                }
-                else break;
                 if(f==0)break;
-                // System.out.println(words[i]+" "+count);
                 j++;
             }
         }
-        System.out.print(map);
            return count;
     }
 }
