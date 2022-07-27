@@ -1,5 +1,6 @@
 class Solution{
-    Map<Integer, Integer> f = new HashMap<>();
+    
+   Map<Integer, Integer> f = new HashMap<>();
     int islands = 0;
 
     public int removeStones(int[][] stones) {
