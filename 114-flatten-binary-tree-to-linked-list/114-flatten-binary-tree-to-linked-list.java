@@ -14,13 +14,14 @@
  * }
  */
 class Solution {
+    TreeNode templ,tempr,toRightLeaf;
     public void flatten(TreeNode root) {
       if(root==null)return;
-        TreeNode templ=root.left;
-        TreeNode tempr=root.right;
-        root.right=root.left=null;
-        root.right=templ;
-        TreeNode toRightLeaf=root;
+         templ=root.left;
+         tempr=root.right;
+         root.right=root.left=null;
+         root.right=templ;
+         toRightLeaf=root;
         while(toRightLeaf.right!=null){
             toRightLeaf=toRightLeaf.right;
             }
