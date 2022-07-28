@@ -1,9 +1,19 @@
-public class Solution {
+class Solution {
     public boolean isAnagram(String s, String t) {
-        int[] alphabet = new int[26];
-        for (int i = 0; i < s.length(); i++) alphabet[s.charAt(i) - 'a']++;
-        for (int i = 0; i < t.length(); i++) alphabet[t.charAt(i) - 'a']--;
-        for (int i : alphabet) if (i != 0) return false;
+     HashMap<Character,Integer>map=new HashMap<>();
+        if(s.length()!=t.length())return false;
+        for(int i=0;i<s.length();i++)
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
+        for(int i=0;i<s.length();i++){
+             int temp=map.containsKey(t.charAt(i))?map.get(t.charAt(i)):0;
+              if(temp>0){
+               map.put(t.charAt(i),temp-1);
+           }
+            else return false;
+        }
+        System.out.print(map.values());
+        for(int i:map.values())
+            if(i>0)return false;
         return true;
     }
 }
