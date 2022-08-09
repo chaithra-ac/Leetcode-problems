@@ -1,24 +1,24 @@
 class Solution {
+      List<List<Integer>>list=new ArrayList<>();
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-        List<List<Integer>> res = new ArrayList<>();
-        List<Integer> path = new ArrayList<>();
-        path.add(0);
-        backtracking(res, graph, 0, path);
-        return res;
+        List<Integer>l=new ArrayList<>();
+        dfs(0,graph,l);
+        return list;
     }
-    
-    private void backtracking(List<List<Integer>> res, int[][] graph, int start, List<Integer> cur) {
-        if(graph[start].length==0 || start==graph.length-1) {
-            if(start==graph.length-1) {
-                res.add(new ArrayList<>(cur));
-            }
+    void dfs(int cur,int[][]g,List<Integer>l){
+       if(l.contains(cur))return;
+        l.add(cur);
+        if(cur==g.length-1){
+            list.add(new ArrayList(l));
+            // System.out.print(l);
             return;
         }
-        
-        for(int next:graph[start]) {
-            cur.add(next);
-            backtracking(res, graph, next, cur);
-            cur.remove(cur.size()-1);
-        }
+        for(int adj:g[cur]){
+            if(!l.contains(adj)){
+                // System.out.println(l+" "+adj);
+                dfs(adj,g,l);
+                l.remove(l.size()-1);
+            }
+        }  
     }
 }
