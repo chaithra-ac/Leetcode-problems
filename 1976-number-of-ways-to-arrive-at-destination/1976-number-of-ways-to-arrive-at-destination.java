@@ -25,9 +25,7 @@ class Solution {
         int paths[] = new int[n];
         paths[0]=1;
         
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->{
-            return (int)(dis[a]-dis[b]);
-        });
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->(int)(dis[a]-dis[b]));
         pq.add(0);
         
         while(!pq.isEmpty()){
@@ -40,7 +38,7 @@ class Solution {
                 if(dis[u]+c<dis[v]){
                     dis[v]=dis[u]+c;
                     paths[v]=paths[u];
-                    pq.remove(v); // I was getting WA because of not removing the older one
+                    pq.remove(v); 
                     pq.add(v);
                 }
                 else if(dis[u]+c==dis[v]){
