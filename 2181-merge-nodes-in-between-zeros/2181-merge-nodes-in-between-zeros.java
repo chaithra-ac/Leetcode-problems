@@ -9,20 +9,19 @@
  * }
  */
 class Solution {
-    ListNode dummy=new ListNode(0);
+    ListNode dummy=new ListNode();
     ListNode res=dummy;
+    int sum=0;
     public ListNode mergeNodes(ListNode head) {
-      head=head.next;
-     while(head!=null){
-         if(head.next==null)return res;
-         if(head.val==0){
-             dummy.next=new ListNode(0);
-             dummy=dummy.next;
-         }
-         else
-         dummy.val+=head.val;
-         head=head.next;
-     }
-        return null;
+        while(head!=null){
+            if(head.val==0&&sum!=0){
+                dummy.next=new ListNode(sum);
+                dummy=dummy.next;
+                sum=0;
+            }
+            else sum+=head.val;
+            head=head.next;
+        }
+        return res.next;
     }
 }
