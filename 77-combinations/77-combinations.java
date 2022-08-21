@@ -1,21 +1,19 @@
 class Solution {
-        List<List<Integer>>list;
     public List<List<Integer>> combine(int n, int k) {
-        list=new ArrayList<>();
-        compute(new ArrayList(),n,k,1);
+        List<List<Integer>>list=new ArrayList<>();
+        compute(list,n,k,1,new ArrayList());
         return list;
     }
-    void compute(ArrayList<Integer>l,int n,int k,int s){
-        if(l.size()>k)return;
-        // System.out.println(l);
-         if(l.size()==k){
-                 list.add(new ArrayList(l));
+    void compute(List<List<Integer>>list,int n,int k,int i,ArrayList<Integer>l){
+        if(k==l.size()){
+            list.add(new ArrayList(l));
             return;
         }
-        for(int i=s;i<=n;i++){
+        if(l.size()>k||i>n)
+            return;
         l.add(i);
-        compute(l,n,k,i+1);
+        compute(list,n,k,i+1,l);
         l.remove(l.size()-1);
-        }
+        compute(list,n,k,i+1,l);
     }
 }
