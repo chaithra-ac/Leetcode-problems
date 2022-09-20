@@ -2,4 +2,4 @@
 3,2,1,4,7
 ​
 1==3 go forward
-else pick/pick and maintain max bs
+else pick/notpick and maintain curmax n max bs
