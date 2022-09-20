@@ -1,2 +1,2 @@
-# Leetcode-problems
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+  # [LeetCode Problem Set](https://leetcode.com/problemset/algorithms/) 
+  ## ![Language](https://img.shields.io/badge/language-Java-blue.svg)
